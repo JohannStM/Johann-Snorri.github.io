@@ -353,7 +353,7 @@
       <div class="eyebrow">Social Data &amp; Visualization</div>
       <h1>New York City: What do response times look like</h1>
       <p class="deck">
-        How emergency response times vary across different boroughs and times in New York City. A data story by Jóhann Steinn Miiller Ólafsson (s252862) &amp; Snorri Arnarsson (s252825)
+        Exploring how FDNY incidents vary across geography, population, and time in New York City. A data story by Jóhann Steinn Miiller Ólafsson (s252862) &amp; Snorri Arnarsson (s252825)
       </p>
       <div class="scroll-note">Scroll to read the story</div>
     </div>
@@ -363,11 +363,15 @@
     <section class="story-section">
       <div class="story-text">
         <div class="section-kicker">Introduction</div>
-        <h2>One city does not mean one crime pattern</h2>
+        <h2>Exploring FDNY Incident Patterns in NYC</h2>
         <p class="lead">
-          intro texti
+          New York City generates hundreds of thousands of emergency incidents every year, ranging from fires and medical emergencies to rescue operations and hazardous situations. While citywide totals can show overall trends, they often hide important geographic and temporal differences across the city.
+        </p>
         <p>
-          intro texti
+          This project explores FDNY incident data to better understand how emergency incidents vary across New York City. The analysis focuses on three main questions: where incidents are concentrated geographically, how incident counts relate to population, and how response times and incident patterns change over time.
+        </p>
+        <p>
+          By combining interactive maps, demographic data, and temporal analysis, the project aims to move beyond simple incident totals and explore the broader spatial patterns behind emergency response activity in NYC.
         </p>
       </div>
     </section>
@@ -377,10 +381,17 @@
     <section class="story-section">
       <div class="story-text">
         
-        <h2>Heatmpa and Fire stations across New York City</h2>
+        <h2>Emergency Incidents Are Concentrated in Specific Parts of the City</h2>
         <p>
-          Skrifa texta hér
-      </div>
+          New York City does not experience emergency incidents evenly across its geography. The heatmap below shows that incidents are heavily concentrated in the densest and most active parts of the city, particularly in Manhattan and parts of Brooklyn and the Bronx. In contrast, the outer areas of Staten Island and eastern Queens generally experience lower incident intensity.
+          </p>
+        <p>
+          Overlaying FDNY fire stations on top of the heatmap also reveals how emergency infrastructure follows these patterns. Areas with consistently high incident activity tend to contain a larger concentration of fire stations, reflecting the increased operational demand in these neighborhoods. 
+          </p>
+          <p>
+            The bar in the top right of the graph allows you to toggle and untoggle the fire stations and heatmap to be able to read the graph better. It is also possible to zoom in and out of the graph. 
+          </p>
+        </div>
 
       <figure class="media-block">
         <iframe
@@ -390,7 +401,7 @@
       </figure>
 
       <figcaption class="caption">
-        <strong>Figure 1.</strong> Texti undir mynd hér 
+        <strong>Figure 1.</strong> Heatmap of FDNY incidents across New York City with FDNY fire station locations overlaid. Incident activity is most concentrated in Manhattan and nearby borough areas, while outer areas generally show lower intensity. Fire stations are also more densely clustered in the city's busiest regions.
       </figcaption>
     </section>
 
@@ -400,8 +411,15 @@
 
     <section class="story-section">
       <div class="story-text">
-        <h2>Population doesn't fully explain incident variation</h2>
-        <p>Texti hér
+        <h2>Population does not fully explain FDNY incident counts</h2>
+        <p>
+          After looking at where incidents are concentrated, the next question is whether these patterns are simply explained by population. It would be reasonable to expect ZIP codes with more residents to also have more emergency incidents.
+        </p>
+        <p>
+          The scatterplot shows that population and incident count are positively related, but the relationship is far from perfect. ZIP codes with similar population sizes can have very different numbers of incidents, and several areas stand out as clear outliers.
+        </p>
+        <p>
+          This suggests that emergency incidents are influenced by more than just how many people live in an area. Factors such as commuting, tourism, business activity, nightlife, and the structure of the neighborhood may also affect incident patterns. 
         </p>
       </div>
 
@@ -412,7 +430,7 @@
       </figure>
 
       <figcaption class="caption">
-        <strong>Figure 2.</strong> Myndatexti
+        <strong>Figure 2.</strong> Relationship between ZIP code population and FDNY incident count. The trend line shows a positive relationship, but the spread of the points indicates that population alone does not fully explain incident levels across New York City.
  
       </figcaption>
     </section>
@@ -422,12 +440,14 @@
 
     <section class="story-section">
       <div class="story-text">
-        <h2>How do incidents look over all the neighbourhoods</h2>
+        <h2>Incident intensity differs across New York City ZIP codes</h2>
         <p>
-          Texti hér 
+          Normalizing incidents by population reveals a clearer geographic pattern across New York City. While some highly populated ZIP codes experience many incidents simply because more people live there, several areas still stand out even after accounting for population size. 
         </p>
-        <p>     
-          By hovering over neighbourhoods, you can see the zip code, overall incident count, population and incidents per 1000 residents. 
+        <p>The highest incident intensity appears in parts of Manhattan and the Bronx, where the number of incidents per 1000 residents remains substantially above the city average. In contrast, many residential areas in outer Queens and Staten Island show considerably lower incident intensity.
+        </p>
+        <p>
+          The interactive map allows exploration of each ZIP code individually, including total incident count, population, and incidents per 1000 residents.
         </p>
       </div>
 
@@ -439,17 +459,18 @@
       </figure>
 
       <figcaption class="caption">
-        <strong>Figure 3.</strong>  Texti fyrir mynd hér
+        <strong>Figure 3.</strong>  FDNY incidents per 1000 residents across New York City ZIP codes. Darker areas indicate ZIP codes with disproportionately high incident intensity relative to population size.
 
       </figcaption>
     </section>
 
     <section class="story-section">
       <div class="story-text">
-        <h2>Number of Fire Stations in Neigbourhoods can matter</h2>
+        <h2>More fire stations may reduce response times</h2>
         <p>
-          Texti hér 
+          The number of fire stations within a ZIP code also appears to influence response times. Areas with few or no nearby stations generally show higher average response times, while ZIP codes with more stations tend to respond faster on average. 
         </p>
+        <p>Although the relationship is not perfect, the overall pattern suggests that emergency infrastructure placement can play an important role in how quickly incidents are handled across the city.</p>
       </div>
 
        <figure class="graph">
@@ -459,17 +480,18 @@
       </figure>
 
       <figcaption class="caption">
-        <strong>Figure 4.</strong>  Texti fyrir mynd hér
+        <strong>Figure 4.</strong> Average FDNY response times grouped by the number of fire stations within a ZIP code. ZIP codes with more stations generally show lower response times.
 
       </figcaption>
     </section>
 
     <section class="story-section">
       <div class="story-text">
-        <h2>How do incidents look over all the neighbourhoods</h2>
+        <h2>Response times have increased across all boroughs</h2>
         <p>
-          Texti hér 
+          Response times have gradually increased across all New York City boroughs throughout the dataset period. While every borough shows an upward trend, the Bronx consistently records the highest average response times, especially in recent years.
         </p>
+        <p>The gap between boroughs also becomes more visible over time. Manhattan and Queens experience notable increases, while Brooklyn and Staten Island generally remain lower throughout most of the period.</p>
         <p>     
           By hovering over the dots, you will be able to see the incident count for the year, and the average response time. 
         </p>
@@ -483,7 +505,7 @@
       </figure>
 
       <figcaption class="caption">
-        <strong>Figure 5.</strong>  Texti fyrir mynd hér
+        <strong>Figure 5.</strong>  Average FDNY response time by borough over time. All boroughs show increasing response times throughout the dataset period, with the Bronx consistently recording the highest averages.
 
       </figcaption>
     </section>
@@ -493,11 +515,11 @@
     <h2>Holiday effects on FDNY activity</h2>
 
     <p>
-      To investigate how holidays affect emergency services in New York City, both total incidents and average response times were analyzed during selected holiday periods.
+      To better understand how special events and holidays affect emergency activity in New York City, both incident counts and average response times were analyzed across several holiday periods. Rather than looking only at yearly averages, these visualizations focus on how FDNY activity changes around specific dates that are known for celebrations, gatherings, and increased movement across the city.
     </p>
 
     <p>
-      The visualizations below compare daily incident volume and response time patterns during July, December, and Thanksgiving.
+      The figures below compare patterns during July 4th, the December holiday season, and Thanksgiving. Together, they show that holidays do not always affect emergency services in the same way. Some periods experience spikes in incidents, while others mainly influence response times.
     </p>
   </div>
 
@@ -512,10 +534,18 @@
       </iframe>
 
       <figcaption class="caption">
-        <strong>Figure 6.</strong> FDNY incidents and average response time during July, highlighting July 4th.
+        <strong>Figure 6.</strong> FDNY incidents and average response time during July, highlighting July 4th. Incident counts increase around the holiday, while response times remain relatively stable compared to the variation seen throughout the rest of the month.
       </figcaption>
     </figure>
 
+    <div class="story-text">
+      <p>
+        While July 4th creates a short and concentrated spike in activity, the winter holiday season shows a more extended pattern. Emergency activity during late December is spread across several days, with both Christmas and New Year’s Day affecting the city differently.
+      </p>
+    </div>
+    
+
+    
     <figure class="media-block">
       <iframe
         src="visualizations/december_incidents_response.html"
@@ -525,9 +555,15 @@
       </iframe>
 
       <figcaption class="caption">
-        <strong>Figure 7.</strong> FDNY incidents and average response time during December.
+        <strong>Figure 7.</strong> FDNY incidents and average response time during December and New Year’s Day. Incident counts generally rise toward the end of the month, while response times fluctuate throughout the holiday period.
       </figcaption>
     </figure>
+
+    <div class="story-text">
+      <p>
+        Unlike the longer December holiday season, Thanksgiving creates a shorter and more isolated disruption in FDNY activity. Looking at the days surrounding Thanksgiving makes it easier to compare how incident levels and response times behave immediately before and after the holiday itself.
+      </p>
+    </div>
 
     <figure class="media-block">
       <iframe
@@ -538,7 +574,7 @@
       </iframe>
 
       <figcaption class="caption">
-        <strong>Figure 8.</strong> FDNY incidents and average response time around Thanksgiving.
+        <strong>Figure 8.</strong> FDNY activity around Thanksgiving between 2013 and 2024. Incident counts peak around the holiday itself, while response times vary more noticeably in the surrounding days.
       </figcaption>
     </figure>
 
