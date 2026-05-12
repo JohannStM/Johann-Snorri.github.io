@@ -351,7 +351,7 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="eyebrow">Social Data &amp; Visualization</div>
-      <h1>New York City: What do response times look like</h1>
+      <h1>Understanding Emergency Response in New York City</h1>
       <p class="deck">
         Exploring how FDNY incidents vary across geography, population, and time in New York City. A data story by Jóhann Steinn Miiller Ólafsson (s252862) &amp; Snorri Arnarsson (s252825)
       </p>
@@ -390,6 +390,8 @@
           </p>
           <p>
             The bar in the top right of the graph allows you to toggle and untoggle the fire stations and heatmap to be able to read the graph better. It is also possible to zoom in and out of the graph. 
+          </p>
+          <p>Since the dataset only reports incidents at the ZIP code level and does not include exact coordinates for each event, the locations displayed on the map correspond to the center of each ZIP code area. This means that when zooming in, the incidents are not shown at their precise locations, but rather clustered around the ZIP code midpoint. 
           </p>
         </div>
 
@@ -442,7 +444,7 @@
       <div class="story-text">
         <h2>Incident intensity differs across New York City ZIP codes</h2>
         <p>
-          After accounting for population, several ZIP codes still stand out with higher incident intensity. This suggests that emergency activity is not only explained by how many people live in an area, but also by factors such as commuting, tourism, business activity, and local infrastructure.
+          After accounting for population, several ZIP codes still stand out with higher incident intensity. This suggests that emergency activity is not only explained by how many people live in an area, but also by factors such as commuting, tourism, business activity, and local infrastructure. The incidents per 1000 residents covers the entire dataset period, from 2013 to 2024. 
         </p>
         <p>
           To make the map easier to interpret, the color scale is capped so that a few extreme ZIP codes do not hide differences across the rest of the city.
@@ -468,9 +470,15 @@
       <div class="story-text">
         <h2>More fire stations may reduce response times</h2>
         <p>
-          The number of fire stations within a ZIP code also appears to influence response times. Areas with few or no nearby stations generally show higher average response times, while ZIP codes with more stations tend to respond faster on average. 
+          The number of fire stations within a ZIP code appears to influence average FDNY response times. ZIP codes with few or no nearby stations generally show higher response times, while areas with more stations tend to respond faster on average.
         </p>
-        <p>Although the relationship is not perfect, the overall pattern suggests that emergency infrastructure placement can play an important role in how quickly incidents are handled across the city.</p>
+        <p>The boxplot also shows that areas with fewer stations have a much wider spread in response times, indicating less consistent emergency coverage. In contrast, ZIP codes with multiple stations not only tend to have lower average response times, but also less variation between incidents.  </p>
+        <p>Although the overall trend suggests that additional fire stations can improve response efficiency,
+the relationship is not perfectly linear. Some ZIP codes with several stations still experience
+relatively high response times, likely due to factors such as traffic congestion, population
+density, incident volume, or geographic complexity. This suggests that emergency response
+performance depends on more than station count alone, though infrastructure placement
+clearly plays an important role across the city. </p>
       </div>
 
        <figure class="graph">
@@ -489,12 +497,17 @@
       <div class="story-text">
         <h2>Response times have increased across all boroughs</h2>
         <p>
-          Response times have gradually increased across all New York City boroughs throughout the dataset period. While every borough shows an upward trend, the Bronx consistently records the highest average response times, especially in recent years.
+Response times have gradually increased across all New York City boroughs throughout the dataset period. Although every borough follows a similar upward trend, the Bronx consistently has the highest average response times, particularly in the later years of the dataset. Manhattan and Queens also show clear increases over time, while Brooklyn and Staten Island remain comparatively lower for most of the period.
         </p>
-        <p>The gap between boroughs also becomes more visible over time. Manhattan and Queens experience notable increases, while Brooklyn and Staten Island generally remain lower throughout most of the period.</p>
+        <p>
+          Another noticeable pattern is that the boroughs become less similar over time. Early in the dataset, the average response times are relatively close across the city, but the separation between boroughs grows steadily in later years. This indicates that the increase in response times is developing unevenly across New York City.
+        </p>
         <p>     
-          By hovering over the dots, you will be able to see the incident count for the year, and the average response time. 
+          The trends may reflect differences in the complexity of emergency response environments between boroughs. Areas with denser road networks, heavier dayƟme acƟvity, and larger numbers of incidents can make it more difficult for emergency services to maintain consistent response times. At the same time, boroughs with lower populaƟon and traffic intensity generally show more stable averages throughout the period.  
         </p>
+        <p>
+          By hovering over the data points, users can explore both the incident count and the average response time for each borough and year.
+          </p>
       </div>
 
       <figure class="media-block">
@@ -540,7 +553,7 @@
 
     <div class="story-text">
       <p>
-        While July 4th creates a short and concentrated spike in activity, the winter holiday season shows a more extended pattern. Emergency activity during late December is spread across several days, with both Christmas and New Year’s Day affecting the city differently.
+        While July 4th creates a short and concentrated spike in activity, the winter holiday season shows a more extended pattern. Emergency activity during late December is spread across several days, with both Christmas and New Year’s Day affecting the city differently. We see that both the 4th of July and Christmas and New Years are affected by an increase in incidents, but at the same time response time is reduced significantly. This is likely due to more firefighter and EMS responders being on shift and ready and alert during the busy season. 
       </p>
     </div>
     
@@ -561,7 +574,7 @@
 
     <div class="story-text">
       <p>
-        Unlike the longer December holiday season, Thanksgiving creates a shorter and more isolated disruption in FDNY activity. Looking at the days surrounding Thanksgiving makes it easier to compare how incident levels and response times behave immediately before and after the holiday itself.
+        Unlike the longer December holiday season, Thanksgiving creates a shorter and more isolated disruption in FDNY activity. Looking at the days surrounding Thanksgiving makes it easier to compare how incident levels and response times behave immediately before and after the holiday itself. We can see that it has the same reaction as the 4th of July and the holiday period, with a spike in incidents and a decrease in response time. 
       </p>
     </div>
 
@@ -577,6 +590,11 @@
         <strong>Figure 8.</strong> FDNY activity around Thanksgiving between 2013 and 2024. Incident counts peak around the holiday itself, while response times vary more noticeably in the surrounding days.
       </figcaption>
     </figure>
+
+    <div class="story-text">
+      <p>
+        InteresƟngly, the data shows that average response Ɵmes tend to decrease during major holidays, even though the number of reported incidents increases significantly. One possible explanaƟon is that traffic paƩerns change during these periods, with fewer commuters and less daytime congestion across the city. This may allow emergency vehicles to travel more efficiently despite the increased incident volume. The pattern suggests that response times are influenced not only by how many incidents occur, but also by broader changes in city activity and mobility      </p>
+    </div>
 
   </div>
 </section>
