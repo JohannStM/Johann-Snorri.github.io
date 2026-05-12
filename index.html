@@ -1,12 +1,572 @@
-@"
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Response: How has response time changed in New Your City</title>
+
+  <style>
+    :root {
+      --bg: #081015;
+      --bg-soft: #0d1720;
+      --panel: rgba(16, 28, 36, 0.72);
+      --text-main: #ecf7f8;
+      --text-soft: #bfd6da;
+      --text-muted: #8eaab0;
+      --accent: #3ec7b7;
+      --accent-soft: #83eadf;
+      --border: rgba(131, 234, 223, 0.14);
+      --line: rgba(131, 234, 223, 0.18);
+      --shadow: rgba(0, 0, 0, 0.28);
+      --content-width: 760px;
+      --media-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text-main);
+      line-height: 1.75;
+      background:
+        radial-gradient(circle at top, rgba(62, 199, 183, 0.10), transparent 24%),
+        linear-gradient(180deg, #061017 0%, #081015 42%, #0b141b 100%);
+    }
+
+    img,
+    iframe {
+      display: block;
+      max-width: 100%;
+      border: 0;
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 20px 56px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(62, 199, 183, 0.14), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.06;
+      font-weight: 800;
+      margin-bottom: 22px;
+      text-wrap: balance;
+    }
+
+    .deck {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: var(--text-soft);
+    }
+
+    .scroll-note {
+      margin-top: 34px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    main {
+      padding: 40px 0 80px;
+    }
+
+    .story-section {
+      padding: 42px 20px;
+    }
+
+    .story-text {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .story-text + .story-text {
+      margin-top: 22px;
+    }
+
+    .section-kicker {
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.18;
+      margin-bottom: 16px;
+      font-weight: 750;
+      text-wrap: balance;
+    }
+
+    p {
+      font-size: 1.04rem;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: var(--text-main);
+    }
+
+    .story-divider {
+      width: min(160px, 32%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 16px auto 8px;
+      opacity: 0.75;
+    }
+
+    .media-block {
+      width: min(var(--media-width), 94vw);
+      margin: 30px auto 18px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(14, 23, 31, 0.92), rgba(10, 18, 24, 0.96));
+      box-shadow: 0 18px 42px var(--shadow);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .media-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.38);
+      border-color: rgba(131, 234, 223, 0.28);
+    }
+
+    .media-block img,
+    .media-block iframe {
+      width: 100%;
+      background: #fff;
+    }
+
+    .media-block iframe {
+      min-height: 620px;
+      background: #0a141a;
+    }
+
+    .caption {
+      max-width: var(--content-width);
+      margin: 14px auto 0;
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .caption strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .holiday-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      width: 100%;
+    }
+
+    .holiday-stack .media-block {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .holiday-stack iframe {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      background: white;
+      display: block;
+    }
+
+    .pull-quote {
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 24px 28px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0 16px 16px 0;
+      color: var(--text-main);
+      font-size: 1.14rem;
+      line-height: 1.7;
+    }
+    .holiday-section {
+      margin: 70px auto;
+      max-width: 1200px;
+    }
+
+    .holiday-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .holiday-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .holiday-card img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .holiday-card h3 {
+      margin-top: 0;
+    }
+    .ending {
+      padding-top: 30px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 20px 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .media-block.small-plot {
+      width: min(900px, 94vw);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        padding: 64px 20px 44px;
+      }
+
+      .media-block iframe {
+        min-height: 460px;
+      }
+    }
+
+      .graph {
+        width: 60%;
+        max-width: 720px;
+        margin: auto;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 24px 0 56px;
+      }
+
+      .story-section {
+        padding: 30px 16px;
+      }
+
+      .deck,
+      .story-text,
+      .caption {
+        max-width: 100%;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .lead {
+        font-size: 1.04rem;
+      }
+
+      .pull-quote {
+        margin: 18px 16px;
+        padding: 20px 20px;
+        font-size: 1.04rem;
+      }
+
+      .media-block {
+        width: min(100%, 96vw);
+        border-radius: 16px;
+      }
+
+      .media-block iframe {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .eyebrow,
+      .section-kicker {
+        font-size: 0.7rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .media-block iframe {
+        min-height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello!</h1>
-  <p>My GitHub Pages site is live.</p>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Social Data &amp; Visualization</div>
+      <h1>New York City: What do response times look like</h1>
+      <p class="deck">
+        How emergency response times vary across different boroughs and times in New York City. A data story by Jóhann Steinn Miiller Ólafsson (s252862) &amp; Snorri Arnarsson (s252825)
+      </p>
+      <div class="scroll-note">Scroll to read the story</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="story-section">
+      <div class="story-text">
+        <div class="section-kicker">Introduction</div>
+        <h2>One city does not mean one crime pattern</h2>
+        <p class="lead">
+          intro texti
+        <p>
+          intro texti
+        </p>
+      </div>
+    </section>
+
+    <div class="story-divider"></div>
+
+    <section class="story-section">
+      <div class="story-text">
+        
+        <h2>Heatmpa and Fire stations across New York City</h2>
+        <p>
+          Skrifa texta hér
+      </div>
+
+      <figure class="media-block">
+        <iframe
+          src="visualizations/fdny_heatmap.html"
+          title="FDNY Heatmap">
+        </iframe>
+      </figure>
+
+      <figcaption class="caption">
+        <strong>Figure 1.</strong> Texti undir mynd hér 
+      </figcaption>
+    </section>
+
+
+
+    <div class="story-divider"></div>
+
+    <section class="story-section">
+      <div class="story-text">
+        <h2>Population doesn't fully explain incident variation</h2>
+        <p>Texti hér
+        </p>
+      </div>
+
+      <figure class="media-block small-plot">
+        <img
+          src="images/population_vs_incidents.png"
+          alt="Population vs Incident Count">
+      </figure>
+
+      <figcaption class="caption">
+        <strong>Figure 2.</strong> Myndatexti
+ 
+      </figcaption>
+    </section>
+
+
+    <div class="story-divider"></div>
+
+    <section class="story-section">
+      <div class="story-text">
+        <h2>How do incidents look over all the neighbourhoods</h2>
+        <p>
+          Texti hér 
+        </p>
+        <p>     
+          By hovering over neighbourhoods, you can see the zip code, overall incident count, population and incidents per 1000 residents. 
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <iframe
+          src="visualizations/incidents_per_1000_map.html"
+          title="Incidents per 1000 residents by ZIP code">
+        </iframe>
+      </figure>
+
+      <figcaption class="caption">
+        <strong>Figure 3.</strong>  Texti fyrir mynd hér
+
+      </figcaption>
+    </section>
+
+    <section class="story-section">
+      <div class="story-text">
+        <h2>Number of Fire Stations in Neigbourhoods can matter</h2>
+        <p>
+          Texti hér 
+        </p>
+      </div>
+
+       <figure class="graph">
+        <img
+          src="images/boxplot_response_time.png"
+          alt="Boxplot of Response Times by Number of Fire Stations in ZIP Codes">
+      </figure>
+
+      <figcaption class="caption">
+        <strong>Figure 4.</strong>  Texti fyrir mynd hér
+
+      </figcaption>
+    </section>
+
+    <section class="story-section">
+      <div class="story-text">
+        <h2>How do incidents look over all the neighbourhoods</h2>
+        <p>
+          Texti hér 
+        </p>
+        <p>     
+          By hovering over the dots, you will be able to see the incident count for the year, and the average response time. 
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <iframe
+          src="visualizations/response_time_boroughs.html"
+          title="Incidents per 1000 residents by ZIP code">
+        </iframe>
+      </figure>
+
+      <figcaption class="caption">
+        <strong>Figure 5.</strong>  Texti fyrir mynd hér
+
+      </figcaption>
+    </section>
+
+    <section class="story-section">
+  <div class="story-text">
+    <h2>Holiday effects on FDNY activity</h2>
+
+    <p>
+      To investigate how holidays affect emergency services in New York City, both total incidents and average response times were analyzed during selected holiday periods.
+    </p>
+
+    <p>
+      The visualizations below compare daily incident volume and response time patterns during July, December, and Thanksgiving.
+    </p>
+  </div>
+
+  <div class="holiday-stack">
+
+    <figure class="media-block">
+      <iframe
+        src="visualizations/july_incidents_response.html"
+        title="July incidents and response time"
+        width="100%"
+        height="450">
+      </iframe>
+
+      <figcaption class="caption">
+        <strong>Figure 6.</strong> FDNY incidents and average response time during July, highlighting July 4th.
+      </figcaption>
+    </figure>
+
+    <figure class="media-block">
+      <iframe
+        src="visualizations/december_incidents_response.html"
+        title="December incidents and response time"
+        width="100%"
+        height="450">
+      </iframe>
+
+      <figcaption class="caption">
+        <strong>Figure 7.</strong> FDNY incidents and average response time during December.
+      </figcaption>
+    </figure>
+
+    <figure class="media-block">
+      <iframe
+        src="visualizations/thanksgiving_incidents_response.html"
+        title="Thanksgiving incidents and response time"
+        width="100%"
+        height="450">
+      </iframe>
+
+      <figcaption class="caption">
+        <strong>Figure 8.</strong> FDNY incidents and average response time around Thanksgiving.
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+    
+
+    <section class="story-section ending">
+      <div class="story-text">
+        <div class="section-kicker">Conclusion</div>
+        <h2>A more local view changes the story</h2>
+        <p>
+          texti
+        </p>
+        <p>
+          texti
+        </p>
+        <p>
+         texti
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Social Data &amp; Visualization · Final Project · Created by s252862 &amp; s252825
+  </footer>
 </body>
 </html>
-"@ | Set-Content index.html
+
+
